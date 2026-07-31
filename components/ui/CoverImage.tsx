@@ -8,7 +8,7 @@ export function CoverImage({ src, alt, className = "" }: { src: string; alt: str
     <img
       src={src}
       alt={alt}
-      className={`h-full w-full object-cover ${className}`}
+      className={`absolute inset-0 h-full w-full object-cover ${className}`}
       onError={(e) => {
         e.currentTarget.style.display = "none";
       }}

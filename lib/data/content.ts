@@ -1,8 +1,11 @@
 export const heroTagline =
   "La Emisora donde se siente, se aprende y se vive la Salsa. ¡Llegó y Pegó!";
 
-export const aboutIntro =
-  "Querido oyente, bienvenido a nuestra emisora virtual. Transmitimos las 24 horas del día, los 7 días de la semana, desde nuestro servidor principal en Orlando, USA, con capacidad ilimitada para nuestros oyentes. Ofrecemos la mejor programación musical con los mejores artistas, pautas comerciales para promover eventos y talentos, y la participación activa de nuestra comunidad. Salsa buena, salsa brava.";
+export const aboutTitle = "Quiénes somos";
+
+export const aboutIntro = `Querido oyente, bienvenido a nuestra emisora virtual. Transmitimos desde el mundo entero. Nuestra señal se puede disfrutar las 24 horas del día. Tenemos la mejor programación musical con los mejores artistas, con mucho cariño para ustedes.
+
+Nuestra emisora funciona las 24/7. Nuestro servidor principal está ubicado en Orlando, USA, con capacidad ilimitada para nuestros oyentes. También ofrecemos pautas comerciales para promover los eventos y talentosos artistas, y lo más importante, nuestros oyentes participan también con nuestra programación musical, SALSA BUENA, SALSA BRAVA.`;
 
 export const ourHistory = `De "Rumba y Guateque" podemos decir que es una radio estación en línea que se venía gestando hace mucho tiempo. Los comienzos de la emisora se remontan a un grupo de amigos que, involucrados en diferentes proyectos, intentaron originar su bosquejo y finalmente en una tertulia, como suele darse en este medio virtual, se cristalizó la idea final de conformar un proyecto nuevo con las ideas y el gusto salsero que teníamos en común.
 

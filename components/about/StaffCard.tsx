@@ -4,7 +4,7 @@ import { CoverImage } from "@/components/ui/CoverImage";
 export function StaffCard({ member, muted = false }: { member: StaffMember; muted?: boolean }) {
   return (
     <div className="flex flex-col items-center text-center gap-3 w-full">
-      <div className="h-28 w-28 overflow-hidden rounded-2xl bg-ink/10 ring-2 ring-guateque-gold/40">
+      <div className="relative h-28 w-28 overflow-hidden rounded-2xl bg-ink/10 ring-2 ring-guateque-gold/40">
         <CoverImage src={member.photo} alt={member.name} />
       </div>
       <div>

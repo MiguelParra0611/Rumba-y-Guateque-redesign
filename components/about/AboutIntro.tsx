@@ -1,17 +1,29 @@
 import { CoverImage } from "@/components/ui/CoverImage";
 import { Container } from "@/components/ui/Container";
-import { aboutIntro } from "@/lib/data/content";
+import { aboutTitle, aboutIntro } from "@/lib/data/content";
 
 export function AboutIntro() {
+  const paragraphs = aboutIntro.split("\n\n");
+
   return (
     <section className="relative w-full aspect-[16/9] overflow-hidden bg-gradient-to-br from-vinyl-black via-salsa-red-dark to-vinyl-black-soft">
       <CoverImage src="/hero-mic.jpg" alt="Micrófono de estudio tipo podcast" className="opacity-85" />
-      <div className="absolute inset-0 bg-gradient-to-t from-vinyl-black/95 via-vinyl-black/50 to-vinyl-black/40" />
-      <div className="relative z-10 flex h-full items-center">
-        <Container>
-          <p className="max-w-xl font-[family-name:var(--font-serif-accent)] text-lg leading-relaxed text-cream sm:text-xl">
-            {aboutIntro}
-          </p>
+      <div className="absolute inset-0 bg-gradient-to-b from-vinyl-black/85 via-vinyl-black/55 to-vinyl-black/85" />
+      <div className="relative z-10 flex h-full items-center justify-center px-4">
+        <Container className="flex flex-col items-center text-center">
+          <h1 className="font-[family-name:var(--font-display)] text-4xl tracking-wide text-cream sm:text-5xl">
+            {aboutTitle}
+          </h1>
+          <div className="mt-5 max-w-2xl space-y-4">
+            {paragraphs.map((p, i) => (
+              <p
+                key={i}
+                className="font-[family-name:var(--font-serif-accent)] text-base leading-relaxed text-cream/90 sm:text-lg"
+              >
+                {p}
+              </p>
+            ))}
+          </div>
         </Container>
       </div>
     </section>

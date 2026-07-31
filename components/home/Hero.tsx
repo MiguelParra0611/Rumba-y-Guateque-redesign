@@ -1,13 +1,12 @@
 "use client";
 
-import { usePlayer } from "@/components/player/PlayerProvider";
+import { useState } from "react";
 import { EqualizerBars } from "@/components/player/EqualizerBars";
 import { CoverImage } from "@/components/ui/CoverImage";
 import { heroTagline } from "@/lib/data/content";
 
 export function Hero() {
-  const { status, start } = usePlayer();
-  const isActive = status === "playing" || status === "loading" || status === "paused";
+  const [playing, setPlaying] = useState(false);
 
   return (
     <section className="relative w-full h-[70vh] min-h-[480px] max-h-[760px] overflow-hidden bg-gradient-to-br from-vinyl-black via-vinyl-black-soft to-salsa-red-dark">
@@ -21,14 +20,15 @@ export function Hero() {
 
         <button
           type="button"
-          onClick={isActive ? undefined : start}
+          onClick={() => setPlaying((v) => !v)}
+          aria-pressed={playing}
           className="group flex items-center gap-3 rounded-full bg-salsa-red px-6 py-3 text-cream shadow-lg shadow-salsa-red/40 transition-transform hover:scale-105"
         >
-          <span className="live-dot h-2.5 w-2.5 rounded-full bg-guateque-gold" />
+          <span className={`h-2.5 w-2.5 rounded-full bg-guateque-gold ${playing ? "live-dot" : ""}`} />
           <span className="font-[family-name:var(--font-display)] text-lg tracking-wider">
-            {isActive ? "AL AIRE" : "AL AIRE — ¡Click Aquí!"}
+            {playing ? "AL AIRE" : "AL AIRE — ¡Click Aquí!"}
           </span>
-          <EqualizerBars animated className="text-guateque-gold" />
+          {playing ? <EqualizerBars animated className="text-guateque-gold" /> : null}
         </button>
       </div>
     </section>
