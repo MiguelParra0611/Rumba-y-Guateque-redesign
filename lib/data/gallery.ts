@@ -1,0 +1,38 @@
+export type GalleryImage = {
+  src: string;
+  alt: string;
+};
+
+const files = [
+  "gallery-01.jpg",
+  "gallery-02.jpg",
+  "gallery-03.jpg",
+  "gallery-04.jpg",
+  "gallery-05.jpg",
+  "gallery-06.jpg",
+  "gallery-07.jpg",
+  "gallery-08.jpg",
+  "gallery-09.jpg",
+  "gallery-10.jpg",
+  "gallery-11.jpg",
+  "gallery-12.jpg",
+  "gallery-13.jpg",
+  "gallery-14.jpg",
+  "gallery-15.jpg",
+  "gallery-16.jpg",
+  "gallery-17.jpg",
+  "gallery-18.jpg",
+  "gallery-19.webp",
+  "gallery-20.jpg",
+  "gallery-21.jpg",
+  "gallery-22.jpg",
+  "gallery-23.jpg",
+  "gallery-24.jpg",
+  "gallery-25.jpeg",
+  "gallery-26.jpg",
+];
+
+export const galleryImages: GalleryImage[] = files.map((file, i) => ({
+  src: `/gallery/${file}`,
+  alt: `Momento de Rumba y Guateque Radio ${i + 1}`,
+}));

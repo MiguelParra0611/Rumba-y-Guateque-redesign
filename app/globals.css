@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-vinyl-black: #17110d;
+  --color-vinyl-black-soft: #241a14;
+  --color-salsa-red: #c81e2c;
+  --color-salsa-red-dark: #8f1420;
+  --color-guateque-gold: #e3a83b;
+  --color-guateque-gold-soft: #f0c97a;
+  --color-cream: #f6ecdd;
+  --color-cream-muted: #e7d8be;
+  --color-ink: #221812;
+  --color-live-green: #3fa34d;
+
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-vinyl-black: var(--color-vinyl-black);
+  --color-vinyl-black-soft: var(--color-vinyl-black-soft);
+  --color-salsa-red: var(--color-salsa-red);
+  --color-salsa-red-dark: var(--color-salsa-red-dark);
+  --color-guateque-gold: var(--color-guateque-gold);
+  --color-guateque-gold-soft: var(--color-guateque-gold-soft);
+  --color-cream: var(--color-cream);
+  --color-cream-muted: var(--color-cream-muted);
+  --color-ink: var(--color-ink);
+  --color-live-green: var(--color-live-green);
+
+  --font-display: var(--font-bebas-neue);
+  --font-serif-accent: var(--font-fraunces);
+  --font-sans: var(--font-manrope);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+@keyframes eq-bounce {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.eq-bar {
+  animation: eq-bounce 0.9s ease-in-out infinite;
+  animation-play-state: paused;
+  transform-origin: bottom;
+}
+
+.eq-bar[data-animated="true"] {
+  animation-play-state: running;
+}
+
+@keyframes pulse-live {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.live-dot {
+  animation: pulse-live 1.6s ease-in-out infinite;
 }
