@@ -1,32 +1,19 @@
-import { createClient } from "@/lib/supabase/server";
+import { articles } from "./data";
 import type { Article } from "./types";
 
 export async function getFeaturedAndRecentArticles(): Promise<{
   featured: Article | null;
   recent: Article[];
 }> {
-  const supabase = await createClient();
+  const published = articles
+    .filter((a) => a.is_published)
+    .sort((a, b) => (a.published_at < b.published_at ? 1 : -1));
 
-  const { data: featuredRows } = await supabase
-    .from("articles")
-    .select("*")
-    .eq("is_published", true)
-    .eq("is_featured", true)
-    .order("published_at", { ascending: false })
-    .limit(1);
+  let featured: Article | null = published.find((a) => a.is_featured) ?? null;
 
-  let featured = (featuredRows?.[0] as Article | undefined) ?? null;
-
-  const { data: recentRows } = await supabase
-    .from("articles")
-    .select("*")
-    .eq("is_published", true)
-    .order("published_at", { ascending: false })
-    .limit(featured ? 7 : 8);
-
-  const recent = ((recentRows as Article[] | null) ?? []).filter(
-    (a) => a.id !== featured?.id
-  );
+  const recent = published
+    .slice(0, featured ? 7 : 8)
+    .filter((a) => a.id !== featured?.id);
 
   if (!featured && recent.length > 0) {
     featured = recent.shift() ?? null;
@@ -36,34 +23,6 @@ export async function getFeaturedAndRecentArticles(): Promise<{
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("articles")
-    .select("*")
-    .eq("slug", slug)
-    .eq("is_published", true)
-    .maybeSingle();
-
-  return (data as Article | null) ?? null;
-}
-
-export async function getAllArticlesForAdmin(): Promise<Article[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("articles")
-    .select("*")
-    .order("published_at", { ascending: false });
-
-  return (data as Article[] | null) ?? [];
-}
-
-export async function getArticleByIdForAdmin(id: string): Promise<Article | null> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("articles")
-    .select("*")
-    .eq("id", id)
-    .maybeSingle();
-
-  return (data as Article | null) ?? null;
+  const article = articles.find((a) => a.slug === slug && a.is_published);
+  return article ?? null;
 }
